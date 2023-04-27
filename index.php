@@ -1,7 +1,8 @@
 <html>
     <title>level3sod</title>
     <body>
-        <form method="post">
+        <a href="dy3.php">view</a>
+        <form method="post" action="dy3.php">
             <label>username</label>
             <input type="text" name="username"/>
             <br><label>password</label>
