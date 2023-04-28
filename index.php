@@ -7,7 +7,7 @@
             <input type="text" name="username"/>
             <br><label>password</label>
             <input type="password" name="password"/>
-            <br><button type="submit">Create</button>
+            <br><button type="submit" name="test">Create</button>
 </form>
 </body>
 </html>
