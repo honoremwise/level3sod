@@ -19,38 +19,8 @@ if($qrys)
     echo"Deleted";
 }
 }
-if(isset($_GET['edit']))
-{
-   $rec=mysqli_query($con,"select * from user where username='".$_GET['edit']."'");
-if($rec)
-{
-    $row=mysqli_fetch_array($rec);
 
-if(isset($_POST['update']))
-{
-$username=$_POST['username'];
-$pswd=$_POST['password'];
-echo $username.": ".$pswd;
-   
-    $update=mysqli_query($con,"update user set password='$pswd' where username='$username'");
-if($update)
-{
-    echo "updated";
-}
-}
-?>
 
-<form method="post" action="">
-            <label>username</label>
-            <input type="text" name="username" value="<?php echo $row['username']?>"/>
-            <br><label>password</label>
-            <input type="text" name="password" value="<?php echo $row['password']?>"/>
-            <br><button type="submit" name="update">UPdate</button>
-</form>
-<?php
-    echo $row['username'];
-}
-}
 if(isset($_POST['test']))
 {
 
@@ -81,29 +51,33 @@ $save=mysqli_query($con,"insert into user (username,password) values('$username'
     echo"</table>";
 
 }
-
-
-//retrieve data 
-
-// $qry=mysqli_query($con,"select * from user");
-// if($qry)
-// while($row=mysqli_fetch_array($qry))
-// {
-// echo $row['id'].".".$row['names']."<a href=?id=".$row['id'].">delete</a><br>";
-// }
-// else
-// {
-//     echo mysqli_error($qry);
-// }
-if(isset($_GET['id']))
+if(isset($_GET['edit']))
 {
-    $id=$_GET['id'];
-    echo $id;
-     $qry=mysqli_query($con,"delete from user where id=$id");
-     if($qry)
-     {
-        echo "successfully deleted";
-     }
+ $_GET['edit']."hihi.";
+    $qry=mysqli_query($con,"select * from user where username='".$_GET['edit']."'");
+    $row=mysqli_fetch_array($qry);
+
+    $row['password'];
+
+    ?>
+     <form method="post" action="">
+            <label>username</label>
+            <input type="text" value="<?php echo $_GET['edit']?>" disabled/>
+            <input type="text" name="username" value="<?php echo $_GET['edit']?>" hidden/>
+            <br><label>password</label>
+            <input type="text" name="password" value="<?php echo $row['password']?>"/>
+            <br><button type="submit" name="update">update</button>
+</form>
+    <?php
+}
+if(isset($_POST['update']))
+{
+    echo $_POST["username"]."hihi";
+    $qry=mysqli_query($con,"update user set password='".$_POST['password']."' where username='".$_POST['username']."'");
+   if($qry)
+   {
+    echo "success";
+   }
 }
 ?>
 </body>
